@@ -59,9 +59,7 @@ int main()
             return 0;
         }
 
-
-
-        printf("%s", buff);
+        printf("\n%s\n", buff);
         sent_bytes = send(client_sockfd, buff, sizeof(buff), 0);
 
         if (sent_bytes == -1) {
