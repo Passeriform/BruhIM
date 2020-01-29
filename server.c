@@ -7,6 +7,21 @@
 #include <netinet/in.h>
 #define MAX_SIZE 90
 
+int choose_valid_port(int sockfd, struct sockaddr_in server_addr, int retries)
+{
+    int bind_return = bind(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));
+
+    if (bind_return == -1) {
+        if (retries == 0) {
+            return -1;
+        }
+        server_addr.sin_port=htons(ntohs(server_addr.sin_port) + 1);
+        return choose_valid_port(sockfd, server_addr, retries - 1);
+    } else {
+        return server_addr.sin_port;
+    }
+}
+
 int main()
 {
     int sockfd, client_sockfd;
@@ -27,7 +42,7 @@ int main()
     server_addr.sin_family=AF_INET;
     server_addr.sin_port=htons(3388);
     server_addr.sin_addr.s_addr=htons(INADDR_ANY);
-    bind_return = bind(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));
+    bind_return = choose_valid_port(sockfd, server_addr, 10);
 
     if (bind_return == -1) {
         printf("\nBinding Error\n");
