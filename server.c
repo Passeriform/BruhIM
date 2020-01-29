@@ -29,7 +29,7 @@ int main()
     server_addr.sin_addr.s_addr=htons(INADDR_ANY);
     bind_return = bind(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));
 
-    if (bind_return == 1) {
+    if (bind_return == -1) {
         printf("\nBinding Error\n");
         close(sockfd);
         return 0;
