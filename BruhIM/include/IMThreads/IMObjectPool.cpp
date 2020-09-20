@@ -1,19 +1,40 @@
 #include <iostream>
 #include <list>
-#include <IMThreads/IMObjectPool.h>
+#include <boost/log/core.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/expressions.hpp>
 
-std::list<IMWorker<int>*> IMObjectPool::workers = std::list<IMWorker<int>*>({ new IMWorker<int>(0) });
+#include "IMObjectPool.h"
+#include "../constants.h"
 
-void IMObjectPool::assignWorker(int value) {
-    IMObjectPool::workers.push_back(new IMWorker<int>(value));
+namespace logging = boost::log;
+
+int IMObjectPool::workerCount = 0;
+
+std::list<IMWorker<int>*> IMObjectPool::idleWorkers = std::list<IMWorker<int>*>();
+std::list<IMWorker<int>*> IMObjectPool::busyWorkers = std::list<IMWorker<int>*>();
+
+IMWorker<int>* IMObjectPool::addNewWorker() {
+	if (idleWorkers.empty()) {
+		if (workerCount == constants::MAX_WORKERS) {
+			/* Thread sleep till available. */
+		}
+
+		IMWorker<int>* newWorker = new IMWorker<int>(rand());
+		idleWorkers.push_back(newWorker);
+		workerCount++;
+
+		return newWorker;
+	}
+	else {
+		return idleWorkers.front();
+	}
 }
 
-std::list<IMWorker<int>*> IMObjectPool::getWorkers() {
-    return IMObjectPool::workers;
+void IMObjectPool::assignWorker() {
+
 }
 
-IMWorker<int>* IMObjectPool::getLastWorker() {
-    IMWorker<int>* worker = IMObjectPool::workers.front();
-    workers.pop_front();
-    return worker;
+void IMObjectPool::deleteWorker(IMWorker<int>* worker) {
+	worker->markForDelete();
 }

@@ -443,10 +443,9 @@ void yyfree ( void * , yyscan_t yyscanner );
 
 #ifdef YY_HEADER_EXPORT_START_CONDITIONS
 #define INITIAL 0
-#define SINGLE_LINE_COMMENT 1
-#define MULTI_LINE_COMMENT 2
-#define STRING 3
-#define INCLUDE 4
+#define COMMENT 1
+#define STRING 2
+#define INCLUDE 3
 
 #endif
 
@@ -712,8 +711,8 @@ extern int yylex \
 #undef yyTABLES_NAME
 #endif
 
-#line 203 "scanner.l"
+#line 198 "scanner.l"
 
-#line 717 "scanner.h"
+#line 716 "scanner.h"
 #undef libconfig_yyIN_HEADER
 #endif /* libconfig_yyHEADER_H */

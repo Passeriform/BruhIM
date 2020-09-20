@@ -1,20 +1,22 @@
+#pragma once
+
 #ifndef IMOBJECTPOOL_H
 #define IMOBJECTPOOL_H
 
 #include <list>
 #include <string>
-#include <IMThreads/IMWorker.h>
 
-class IMObjectPool
-{
-    static std::list<IMWorker<int>*> workers;
+#include "IMThreads/IMWorker.h"
+
+class IMObjectPool {
+	static int workerCount;
+	static std::list<IMWorker<int>*> busyWorkers;
+	static std::list<IMWorker<int>*> idleWorkers;
 
 public:
-    static void assignWorker(int);
-
-    static std::list<IMWorker<int>*> getWorkers();
-
-    static IMWorker<int>* getLastWorker();
+	static IMWorker<int>* addNewWorker();
+	static void assignWorker();
+	static void deleteWorker(IMWorker<int>*);
 };
 
 #endif

@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
    libconfig - A library for processing structured configuration files
-   Copyright (C) 2005-2020  Mark A Lindner
+   Copyright (C) 2005-2018  Mark A Lindner
 
    This file is part of libconfig.
 
@@ -34,10 +34,8 @@ typedef struct
   size_t capacity;
 } strvec_t;
 
-extern void libconfig_strvec_append(strvec_t *vec, const char *s);
+void strvec_append(strvec_t *vec, const char *s);
 
-extern const char **libconfig_strvec_release(strvec_t *vec);
-
-extern void libconfig_strvec_delete(const char * const *vec);
+const char **strvec_release(strvec_t *vec);
 
 #endif /* __libconfig_strvec_h */

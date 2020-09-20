@@ -1,15 +1,13 @@
 #include <iostream>
-
 #include <libconfig.h++>
-
-#include <bruhEngine.h>
-
-// #include "bruhServer"
-// #include "bruhClient"
-
 #include <boost/log/core.hpp>
 #include <boost/log/trivial.hpp>
 #include <boost/log/expressions.hpp>
+
+#include "bruhEngine.h"
+// #include "bruhServer"
+// #include "bruhClient"
+
 
 namespace logging = boost::log;
 
@@ -31,7 +29,7 @@ int main() {
 
 	BOOST_LOG_TRIVIAL(info) << "BruhIM initialized";
 
-	if (bruhEngine::lookupConfig<bool>("daemonize", &config)) {
+	if (bruhEngine::lookupConfig<bool>("daemonize", &config, false)) {
 		BOOST_LOG_TRIVIAL(info) << "Running daemon version. You can continue your work!";
 		bruhEngine::runDaemon(&config);
 		// BOOST_LOG_TRIVIAL(debug) << "Running at process id: " << bruhEngine::getDaemonPid();
@@ -39,7 +37,8 @@ int main() {
 	else {
 		BOOST_LOG_TRIVIAL(info) << "Running live version. Press ctrl^+R to attach to daemon. Press ctrl^+C to kill.";
 		bruhEngine::runServer(&config);
+
+		bruhEngine::streamInput();
 	}
 
-	std::cin.get();
 }
