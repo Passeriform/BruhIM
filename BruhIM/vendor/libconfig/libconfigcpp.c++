@@ -65,14 +65,14 @@ ParseException::ParseException(const ParseException &other)
 
 // ---------------------------------------------------------------------------
 
-ParseException::~ParseException() LIBCONFIGXX_NOEXCEPT
+ParseException::~ParseException() throw()
 {
   ::free((void *)_file);
 }
 
 // ---------------------------------------------------------------------------
 
-const char *ParseException::what() const LIBCONFIGXX_NOEXCEPT
+const char *ParseException::what() const throw()
 {
   return("ParseException");
 }
@@ -211,14 +211,14 @@ SettingException &SettingException::operator=(const SettingException &other)
 
 // ---------------------------------------------------------------------------
 
-const char *SettingException::what() const LIBCONFIGXX_NOEXCEPT
+const char *SettingException::what() const throw()
 {
   return("SettingException");
 }
 
 // ---------------------------------------------------------------------------
 
-SettingException::~SettingException() LIBCONFIGXX_NOEXCEPT
+SettingException::~SettingException() throw()
 {
   ::free(_path);
 }
@@ -247,7 +247,7 @@ SettingTypeException::SettingTypeException(const Setting &setting,
 
 // ---------------------------------------------------------------------------
 
-const char *SettingTypeException::what() const LIBCONFIGXX_NOEXCEPT
+const char *SettingTypeException::what() const throw()
 {
   return("SettingTypeException");
 }
@@ -277,7 +277,7 @@ SettingNotFoundException::SettingNotFoundException(const char *path)
 
 // ---------------------------------------------------------------------------
 
-const char *SettingNotFoundException::what() const LIBCONFIGXX_NOEXCEPT
+const char *SettingNotFoundException::what() const throw()
 {
   return("SettingNotFoundException");
 }
@@ -292,14 +292,14 @@ SettingNameException::SettingNameException(const Setting &setting,
 
 // ---------------------------------------------------------------------------
 
-const char *SettingNameException::what() const LIBCONFIGXX_NOEXCEPT
+const char *SettingNameException::what() const throw()
 {
   return("SettingNameException");
 }
 
 // ---------------------------------------------------------------------------
 
-const char *FileIOException::what() const LIBCONFIGXX_NOEXCEPT
+const char *FileIOException::what() const throw()
 {
   return("FileIOException");
 }
