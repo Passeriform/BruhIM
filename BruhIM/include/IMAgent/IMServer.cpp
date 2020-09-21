@@ -66,7 +66,7 @@ catch (std::exception& e) {
 int IMServer::prepareSocket(int port = 3000, int retries = 3) {
 	address.sin_family = AF_INET;
 #ifdef _WIN32
-	InetPton(AF_INET, (PCSTR)"192.168.1.4", &address.sin_addr.s_addr);
+	InetPton(AF_INET, (PCSTR)(INADDR_ANY), &address.sin_addr.s_addr);
 #else
 	address.sin_addr.s_addr = inet_addr("192.168.1.4");
 #endif
