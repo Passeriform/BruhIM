@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BruhIM", "BruhIM\BruhIM.vcxproj", "{E468EAF7-F35A-4D05-8F89-C955FAC88356}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BruhIMTesterClient", "BruhIMTesterClient\BruhIMTesterClient.vcxproj", "{93347506-8D9D-4935-B523-57F6CFC39DE1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E468EAF7-F35A-4D05-8F89-C955FAC88356} = {E468EAF7-F35A-4D05-8F89-C955FAC88356}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,14 @@ Global
 		{E468EAF7-F35A-4D05-8F89-C955FAC88356}.Release|x64.Build.0 = Release|x64
 		{E468EAF7-F35A-4D05-8F89-C955FAC88356}.Release|x86.ActiveCfg = Release|Win32
 		{E468EAF7-F35A-4D05-8F89-C955FAC88356}.Release|x86.Build.0 = Release|Win32
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Debug|x64.ActiveCfg = Debug|x64
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Debug|x64.Build.0 = Debug|x64
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Debug|x86.ActiveCfg = Debug|Win32
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Debug|x86.Build.0 = Debug|Win32
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Release|x64.ActiveCfg = Release|x64
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Release|x64.Build.0 = Release|x64
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Release|x86.ActiveCfg = Release|Win32
+		{93347506-8D9D-4935-B523-57F6CFC39DE1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
